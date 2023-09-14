@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/login',[AuthController::class,'login']);
 Route::post('/register',[AuthController::class,'register']);
 Route::post('/registerAddress',[CustomerController::class,'storeAddress']);
+Route::post('/address/index',[CustomerController::class,'allAddress']);
+Route::any('/order',[OrderController::class,'store']);
+
+
+
 
 
 //http://localhost/back_cake/public/api/login --PostMan--

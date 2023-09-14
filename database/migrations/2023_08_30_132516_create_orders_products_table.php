@@ -14,12 +14,17 @@ return new class extends Migration
     public function up()
     {
         Schema::create('orders_products', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('product_id')->nullable()->constrained();
-            $table->foreignId('order_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->increments('id');
+            $table->integer('product_id')->unsigned()->nullable();
+            $table->foreign('product_id')
+                ->references('id')
+                ->on('products');
+            $table->integer('order_id')->unsigned()->nullable();
+            $table->foreign('order_id')
+                ->references('id')
+                ->on('orders');
             $table->integer('quantity');
-            $table->decimal('subt_total', 12, 2);
-            $table->string('sort')->default(0);
+            $table->decimal('subt_total', 15, 2);            $table->string('sort')->default(0);
             $table->timestamps();
         });
     }
