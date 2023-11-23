@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\Utils\SpaceController;
+use App\Http\Controllers\Utils\Space2Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +19,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::resource('photos', PhotoController::class);
+Route::resource('space', SpaceController::class);
+Route::resource('space', Space2Controller::class);
